@@ -1,0 +1,49 @@
+﻿{
+  "name": "第一次注入GBF测试",
+  "icons": {
+    "16": "icon/icon_16.png",
+    "48": "icon/icon_48.png",
+    "128": "icon/icon_128.png"
+  },
+  "version": "1.0.0.10",
+  "manifest_version": 2,
+  "description": "我只是个测试插件",
+  "permissions": [
+	"https://www.baidu.com/",
+	"*://game.granbluefantasy.jp/*",
+	"tabs",
+	"notifications",
+    "storage",
+    "unlimitedStorage",
+    "clipboardRead",
+    "clipboardWrite",
+    "webRequest",
+    "webRequestBlocking",
+    "cookies",
+    "identity"
+  ],
+    "web_accessible_resources": [
+    "icon/*.png",
+    "*.js"
+  ],
+  "content_scripts": [
+        {
+            "matches": [ "https://www.baidu.com/" ],
+            "js": [ "content/content.js" ],
+            "run_at": "document_end",
+            "all_frames": true
+        },
+		        {
+            "matches": [ "http://game.granbluefantasy.jp/*" ],
+            "js": [ "content/contenttoGBF.js" ],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+		],
+		
+  "browser_action": {
+    "default_icon": "icon/icon_16.png",
+    "default_title": "周回地址",
+    "default_popup": "popup/popup.html"
+  }
+}
